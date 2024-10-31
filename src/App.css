@@ -1,38 +1,153 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* .App {
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: center;
+} */
+
+/* Center the container both vertically and horizontally */
+.app-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  flex-direction: column;
+}
+
+h1 {
+  text-align: center;
+  text-transform: uppercase;
+  color: #333;
+}
+
+/* Style the form container */
+/* .form-container {
+  display: flex;
+  gap: 10rem;
+  justify-content: space-between;
+  padding: 20px;
+} */
+
+.form-container {
+  display:grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 2rem;
+  padding-left:2rem;
+  padding-right: 2rem;
+}
+
+.input-form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* Style input fields */
+input {
+  width: 250px;
+  padding: 10px;
+  font-size: 1.2em;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Style h3 */
+h3 {
+  color: #666;
+  padding-left: 10px;
+}
+
+.inc-exc {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.search-buttons {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  padding: 0;
+}
+
+/* Style buttons */
+button {
+  padding: 10px 20px;
+  margin: 10px;
+  font-size: 1.1em;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #f78c20;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+button:active {
+  transform: scale(0.98);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
+button[style*="background-color: green"] {
+  background-color: green;
+}
+
+button[style*="background-color: gray"] {
+  background-color: gray;
+}
+
+/* Style the results grid */
+.results-container {
+  max-width: 100%;
+}
+
+.results-container > p {
+  text-align:center;
+  color: #bfb7b0;
+}
+
+.results-grid {
+  display: grid;
+  gap: 10px;
+  padding: 2rem;
+}
+
+.line-divider {
+  height: 1px;
+  width: 100%;
+  background-color: #bfb7b0; /* Dark gray color */
+  margin: 10px 0; /* Adjust margins as needed */
+}
+
+.word {
+  color: #706862;
+}
+
+/* Responsive grid layout */
+@media (min-width: 1200px) {
+  .results-grid {
+    grid-template-columns: repeat(6, 1fr);
   }
 }
+
+@media (min-width: 768px) {
+  .results-grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+@media (max-width: 767px) {
+  .results-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Style each word in the results */
+.word {
+  background-color: #f8f8f8;
+  padding: 15px;
+  font-size: 1.3em;
+  text-align: center;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+}
+

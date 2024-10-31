@@ -1,25 +1,35 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
+import SearchForm from './components/SearchForm';
+import SearchResults from './components/SearchResults';
+import LineDivider from './components/LineDivider';
+import wordList from '../src/components/5_letter_words.txt';
 
-function App() {
+const App = () => {
+  const [results, setResults] = useState([]);
+
+  const filterWords = (included, excluded) => {
+    fetch(wordList)
+      .then((response) => response.text())
+      .then((data) => {
+        const words = data.split('\n').map((word) => word.trim());
+        const filteredWords = words.filter((word) =>
+          included.every((letter) => word.includes(letter)) &&
+          excluded.every((letter) => !word.includes(letter))
+        );
+        setResults(filteredWords);
+      });
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Solvdle</h1>
+      <SearchForm onSearch={filterWords} />
+      <LineDivider />
+      <SearchResults results={results} />
     </div>
   );
-}
+};
 
 export default App;
+
